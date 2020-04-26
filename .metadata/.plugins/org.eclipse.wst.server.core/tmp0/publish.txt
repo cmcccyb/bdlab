@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Thu Apr 23 13:31:30 CST 2020
+org.eclipse.jst.jee.server\:/binary\:D\:\\Repoistroy\\org\\springframework\\spring-web\\4.3.7.RELEASE\\spring-web-4.3.7.RELEASE.jar=D\:\\tomcat\\apache-tomcat-7.0.88\\webapps\\BD_StorageServer_Maven\\WEB-INF\\lib\\spring-web-4.3.7.RELEASE.jar
+org.eclipse.jst.jee.server\:BD_StorageServer_Maven=D\:\\tomcat\\apache-tomcat-7.0.88\\webapps\\BD_StorageServer_Maven
+org.eclipse.jst.jee.server\:BD_AggregateServer_Maven=D\:\\tomcat\\apache-tomcat-7.0.88\\webapps\\BD_AggregateServer_Maven

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 处理逻辑 -->
+	<bean id="handler" class="com.cloud.mina.unit_a.strategy.StrategyFactroyHandler" />
+
+	<bean id="unitASportsComponent"
+		class="com.cloud.mina.component.filter.UnitASportComponent">
+		<property name="list">
+			<list>
+				<bean class="com.cloud.mina.component.unit_a.sport.SportLoginParser" />
+				<bean class="com.cloud.mina.component.unit_a.sport.No8OneWayParser" />
+				<bean class="com.cloud.mina.component.unit_a.sport.No8TwoWayParser" />
+				<bean class="com.cloud.mina.component.unit_a.sport.No8ThreeWayParser" />
+				<bean class="com.cloud.mina.component.unit_a.sport.SportLogoutParser" />
+			</list>
+		</property>
+	</bean>
+	<bean id="unitABPComponent" class="com.cloud.mina.component.filter.UnitABPComponent">
+		<property name="list">
+			<list>
+				<bean
+					class="com.cloud.mina.component.unit_a.bp.BPNo1LoginParer" />
+				<bean
+					class="com.cloud.mina.component.unit_a.bp.BPNo4SynsTimeParer" />
+				<bean
+					class="com.cloud.mina.component.unit_a.bp.BPNo8DataParer" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 累加数据包解码器：解断丢包、粘包问题 -->
+	<bean id="codec" class="com.cloud.mina.component.filter.ComponentIOFilter">
+		<constructor-arg index="0">
+			<bean class="com.cloud.mina.component.filter.MHRootComponent">
+				<property name="list">
+					<list>
+						<ref bean="unitASportsComponent"></ref>
+						<ref bean="unitABPComponent"></ref>
+					</list>
+				</property>
+			</bean>
+		</constructor-arg>
+
+	</bean>
+
+
+	<!-- 多线程处理过滤器，为后面的操作开启多线程，一般放在编解码过滤器之后，开始业务逻辑处理 -->
+	<bean id="executors" class="org.apache.mina.filter.executor.ExecutorFilter" />
+	<!-- Mina自带日志过滤器 默认级别为debug -->
+	<bean id="loggerFilter" class="org.apache.mina.filter.logging.LoggingFilter">
+		<property name="messageReceivedLogLevel" ref="info"></property>
+		<property name="exceptionCaughtLogLevel" ref="info"></property>
+	</bean>
+	<!-- 枚举类型 依赖注入 需要先通过此类进行类型转换 -->
+	<bean id="info"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField" value="org.apache.mina.filter.logging.LogLevel.INFO" />
+	</bean>
+	<bean id="filterChainBuilder"
+		class="org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder">
+		<property name="filters">
+			<map>
+				<entry key="codec" value-ref="codec" />
+				<entry key="logger" value-ref="loggerFilter" />
+				<entry key="executors" value-ref="executors" />
+			</map>
+		</property>
+	</bean>
+	<bean id="defaultLocalAddress" class="java.net.InetSocketAddress">
+		<constructor-arg index="0" value="${tcpPort}"></constructor-arg>
+	</bean>
+	<!-- session config -->
+	<bean id="sessionConfig" factory-bean="ioAcceptor" factory-method="getSessionConfig">
+		<property name="readerIdleTime" value="40" />
+		<property name="minReadBufferSize" value="512" />
+		<property name="maxReadBufferSize" value="10240" />
+		<!--<property name="readBufferSize" value="20480"/> --><!--<property name="receiveBufferSize" value="5000"/> -->
+	</bean>
+	<bean id="ioAcceptor" class="org.apache.mina.transport.socket.nio.NioSocketAcceptor"
+		init-method="bind" destroy-method="unbind">
+		<!-- 默认启用的线程个数是CPU 的核数+1， -->
+		<constructor-arg index="0" value="10"></constructor-arg>
+		<property name="defaultLocalAddress" ref="defaultLocalAddress" />
+		<property name="handler" ref="handler" />
+		<property name="filterChainBuilder" ref="filterChainBuilder" />
+	</bean>
+</beans>  

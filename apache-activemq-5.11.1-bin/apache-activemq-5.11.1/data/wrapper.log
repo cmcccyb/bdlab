@@ -1,0 +1,37 @@
+STATUS | wrapper  | 2020/04/24 16:58:54 | --> Wrapper Started as Console
+STATUS | wrapper  | 2020/04/24 16:58:54 | Launching a JVM...
+INFO   | jvm 1    | 2020/04/24 16:58:55 | Wrapper (Version 3.2.3) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2020/04/24 16:58:55 |   Copyright 1999-2006 Tanuki Software, Inc.  All Rights Reserved.
+INFO   | jvm 1    | 2020/04/24 16:58:55 | 
+INFO   | jvm 1    | 2020/04/24 16:58:55 | Java Runtime: Oracle Corporation 1.7.0_17 D:\Java\jre7
+INFO   | jvm 1    | 2020/04/24 16:58:55 |   Heap sizes: current=248704k  free=236995k  max=932096k
+INFO   | jvm 1    | 2020/04/24 16:58:55 |     JVM args: -Dactivemq.home=../.. -Dactivemq.base=../.. -Djavax.net.ssl.keyStorePassword=password -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=../../conf/broker.ks -Djavax.net.ssl.trustStore=../../conf/broker.ts -Dcom.sun.management.jmxremote -Dorg.apache.activemq.UseDedicatedTaskRunner=true -Djava.util.logging.config.file=logging.properties -Dactivemq.conf=../../conf -Dactivemq.data=../../data -Djava.security.auth.login.config=../../conf/login.config -Xmx1024m -Djava.library.path=../../bin/win64 -Dwrapper.key=kM6MeGQtOWdMVslp -Dwrapper.port=32000 -Dwrapper.jvm.port.min=31000 -Dwrapper.jvm.port.max=31999 -Dwrapper.pid=6596 -Dwrapper.version=3.2.3 -Dwrapper.native_library=wrapper -Dwrapper.cpu.timeout=10 -Dwrapper.jvmid=1
+INFO   | jvm 1    | 2020/04/24 16:58:55 | Extensions classpath:
+INFO   | jvm 1    | 2020/04/24 16:58:55 |   [..\..\lib,..\..\lib\camel,..\..\lib\optional,..\..\lib\web,..\..\lib\extra]
+INFO   | jvm 1    | 2020/04/24 16:58:55 | ACTIVEMQ_HOME: ..\..
+INFO   | jvm 1    | 2020/04/24 16:58:55 | ACTIVEMQ_BASE: ..\..
+INFO   | jvm 1    | 2020/04/24 16:58:55 | ACTIVEMQ_CONF: ..\..\conf
+INFO   | jvm 1    | 2020/04/24 16:58:55 | ACTIVEMQ_DATA: ..\..\data
+INFO   | jvm 1    | 2020/04/24 16:58:55 | Loading message broker from: xbean:activemq.xml
+INFO   | jvm 1    | 2020/04/24 16:58:55 |  INFO | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@525782df: startup date [Fri Apr 24 16:58:55 CST 2020]; root of context hierarchy
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | PListStore:[D:\BDProject\apache-activemq-5.11.1-bin\apache-activemq-5.11.1\bin\win64\..\..\data\localhost\tmp_storage] started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Using Persistence Adapter: KahaDBPersistenceAdapter[D:\BDProject\apache-activemq-5.11.1-bin\apache-activemq-5.11.1\bin\win64\..\..\data\kahadb]
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Apache ActiveMQ 5.11.1 (localhost, ID:LAPTOP-P1J6RD6U-52068-1587718736144-0:1) is starting
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Listening for connections at: tcp://LAPTOP-P1J6RD6U:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Connector openwire started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Listening for connections at: amqp://LAPTOP-P1J6RD6U:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Connector amqp started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Listening for connections at: stomp://LAPTOP-P1J6RD6U:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Connector stomp started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Listening for connections at: mqtt://LAPTOP-P1J6RD6U:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Connector mqtt started
+INFO   | jvm 1    | 2020/04/24 16:58:56 | {}
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Listening for connections at ws://LAPTOP-P1J6RD6U:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Connector ws started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Apache ActiveMQ 5.11.1 (localhost, ID:LAPTOP-P1J6RD6U-52068-1587718736144-0:1) started
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | For help or more information please see: http://activemq.apache.org
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | ActiveMQ WebConsole available at http://0.0.0.0:8161/
+INFO   | jvm 1    | 2020/04/24 16:58:56 |  INFO | Initializing Spring FrameworkServlet 'dispatcher'
+INFO   | jvm 1    | 2020/04/24 16:58:57 |  INFO | jolokia-agent: No access restrictor found at classpath:/jolokia-access.xml, access to all MBeans is allowed
+INFO   | jvm 1    | 2020/04/26 11:08:56 |  INFO | Connector vm://localhost started
+INFO   | jvm 1    | 2020/04/26 13:37:52 |  WARN | Transport Connection to: tcp://127.0.0.1:61382 failed: java.net.SocketException: Connection reset
